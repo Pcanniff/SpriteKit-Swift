@@ -18,23 +18,18 @@ class ParallaxSprite: SKSpriteNode {
     required init(coder: NSCoder) {
         fatalError("NSCoding not supported")
     }
-
-    init(texture: SKTexture!) {
-        super.init(texture: texture, color:SKColor.blackColor(), size: CGSizeMake(100, 100));
-    }
     
     override init(texture: SKTexture!, color: UIColor!, size: CGSize) {
         super.init(texture: texture, color: color, size:size)
     }
     
     init(name : String, speed : Double, frame: CGRect) {
-        super.init();
         
         self.parallaxName = name;
         self.parallaxSpeed = speed;
-        
         let texture : SKTexture = SKTexture(imageNamed: parallaxName);
-
+        super.init(texture: texture, color:SKColor.blackColor(), size: CGSizeMake(100, 100));
+        
         self.image1 = SKSpriteNode(texture: texture, size: texture.size());
         self.image1.position = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
         self.addChild(image1);
